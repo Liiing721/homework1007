@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品訂購單</title>
+</head>
+
+<body>
+
+    <h1>商品訂購單</h1>
+    <hr>
+
+    <h2>商品資訊</h2>
+    <p>以下為所有可供訂購的商品清單：</p>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>商品編號</th>
+                <th>商品名稱</th>
+                <th>規格</th>
+                <th>原價</th>
+                <th>特價</th>
+                <th>庫存</th>
+                <th>評價</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>P001</td>
+                <td>無線藍牙耳機</td>
+                <td>黑色/白色</td>
+                <td>$2,500</td>
+                <td>$1,990</td>
+                <td>25</td>
+                <td>★★★★☆</td>
+            </tr>
+            <tr>
+                <td>P002</td>
+                <td>USB-C 充電線</td>
+                <td>1.5米</td>
+                <td>$499</td>
+                <td>$299</td>
+                <td>50</td>
+                <td>★★★★★</td>
+            </tr>
+            <tr>
+                <td>P003</td>
+                <td>行動電源</td>
+                <td>10000mAh</td>
+                <td>$1,200</td>
+                <td>$899</td>
+                <td>12</td>
+                <td>★★★☆☆</td>
+            </tr>
+            <tr>
+                <td>P004</td>
+                <td>手機支架</td>
+                <td>可調式</td>
+                <td>$350</td>
+                <td>$199</td>
+                <td>30</td>
+                <td>★★★★☆</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5"><strong>總共四項產品</strong></td>
+                <td colspan="2"><strong>限時優惠中</strong></td>
+            </tr>
+        </tfoot>
+    </table>
+
+
+    <hr>
+
+    <h2>訂購表單</h2>
+
+    <form action="/submit-order" method="POST">
+
+        <fieldset>
+            <legend>
+                <h3>選購商品</h3>
+            </legend>
+            <p>選擇商品：</p>
+
+            <p>
+                <input type="checkbox" id="item1" name="product" value="P001">
+                <label for="item1">無線藍牙耳機 - $1,990</label>
+                <select name="P001_color">
+                    <option value="">選擇顏色</option>
+                    <option value="黑色">黑色</option>
+                    <option value="白色">白色</option>
+                </select>
+                數量: <input type="number" name="P001_qty" value="1" min="1" style="width: 50px;">
+            </p>
+
+            <p>
+                <input type="checkbox" id="item2" name="product" value="P002">
+                <label for="item2">USB-C 充電線 - $299</label>
+                數量: <input type="number" name="P002_qty" value="1" min="1" style="width: 50px;">
+            </p>
+
+            <p>
+                <input type="checkbox" id="item3" name="product" value="P003">
+                <label for="item3">行動電源 - $899</label>
+                數量: <input type="number" name="P003_qty" value="1" min="1" style="width: 50px;">
+            </p>
+
+            <p>
+                <input type="checkbox" id="item4" name="product" value="P004">
+                <label for="item4">手機支架 - $199</label>
+                數量: <input type="number" name="P004_qty" value="1" min="1" style="width: 50px;">
+            </p>
+        </fieldset>
+
+        <hr>
+
+        <fieldset>
+            <legend>
+                <h3>收件人資訊</h3>
+            </legend>
+            <p>
+                <label for="name">收件人姓名:</label>
+                <input type="text" id="name" name="recipient_name"  placeholder="請輸入收件人姓名">
+            </p>
+            <p>
+                <label for="phone">收件人電話:</label>
+                <input type="text" id="phone" name="recipient_phone" placeholder="(XX) XXXXXXXX">
+            </p>
+            <p>
+                <label for="email">電子郵件:</label>
+                <input type="email" id="email" name="recipient_email" placeholder="XXX@XXX.XXX">
+            </p>
+            <p>
+                <label for="address">收件地址:</label>
+                <input type="text" id="address" name="recipient_address"  placeholder="須填寫縣市鄉鎮區，詳細地址">
+            </p>
+        </fieldset>
+
+        <hr>
+
+        <fieldset>
+            <legend>
+                <h3>配送選項</h3>
+            </legend>
+            <p>配送方式:</p>
+            <p>
+                <input type="radio" id="standard" name="shipping_method" value="標準配送" checked>
+                <label for="standard">標準配送 (3-5 個工作天) - 免費</label><br>
+
+                <input type="radio" id="express" name="shipping_method" value="快速配送">
+                <label for="express">快速配送 (1-2 個工作天) - $100</label><br>
+
+                <input type="radio" id="nextday" name="shipping_method" value="隔夜配送">
+                <label for="nextday">隔夜配送 (次日到貨) - $200</label>
+            </p>
+            <p>
+                <label for="delivery_time">希望配送時間:</label>
+                <select id="delivery_time" name="delivery_time">
+                    <option value="不指定">不指定</option>
+                    <option value="上午">上午 (9點-12點)</option>
+                    <option value="下午">下午 (12點-6點)</option>
+                    <option value="晚上">晚上 (6點-9點)</option>
+                </select>
+            </p>
+        </fieldset>
+
+        <hr>
+
+        <fieldset>
+            <legend>
+                <h3>付款方式</h3>
+            </legend>
+            <p>
+                <input type="radio" id="credit_card" name="payment_method" value="信用卡" checked>
+                <label for="credit_card">信用卡</label><br>
+
+                <input type="radio" id="atm" name="payment_method" value="ATM轉帳">
+                <label for="atm">ATM 轉帳</label><br>
+
+                <input type="radio" id="cod" name="payment_method" value="貨到付款">
+                <label for="cod">貨到付款</label>
+            </p>
+        </fieldset>
+
+        <hr>
+
+        <fieldset>
+            <legend>
+                <h3>其他資訊</h3>
+            </legend>
+            <p>
+                <label for="coupon">優惠代碼:</label>
+                <input type="text" id="coupon" name="coupon" placeholder="請輸入優惠代碼">
+            </p>
+
+            <p>
+                <label for="notes">訂單備註:</label><br>
+                <textarea id="notes" name="notes" rows="3" cols="50" placeholder="有任何特殊需求請在此註明..."></textarea>
+            </p>
+
+            <p>
+                <input type="checkbox" id="subscribe" name="subscribe" value="yes">
+                <label for="subscribe">我想收到最新商品資訊及優惠訊息</label>
+            </p>
+
+            <p>
+                <input type="checkbox" id="terms" name="terms" value="accepted" required>
+                <label for="terms">我已閱讀並同意 <a href="#">購物須知與隱私權政策</a></label>
+            </p>
+        </fieldset>
+
+        <p>
+            <button type="submit">確認訂購</button>
+            <!-- <input type="submit" value="送出"> -->
+            <button type="reset">重設表單</button>
+        </p>
+
+
+    </form>
+
+</body>
+
+</html>
